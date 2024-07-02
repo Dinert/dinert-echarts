@@ -1,0 +1,16 @@
+:root {
+    // --vp-layout-max-width: 1440px;
+}
+
+.VPDoc.has-aside .content .content-container {
+    max-width: unset;
+}
+
+.VPSidebar {
+    // max-width: 300px;
+}
+
+.dinertDemo-example-component > div {
+    width: 100%;
+    height: 300px;
+}
