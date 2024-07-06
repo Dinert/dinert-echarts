@@ -1,11 +1,6 @@
-import * as echarts from 'echarts'
-import {TitleComponentOption, TooltipComponentOption} from 'echarts'
-interface OptionsType{
-    title?: TitleComponentOption;
-    tooltip?: TooltipComponentOption;
-}
+import {ChartSetOptionsInstance, ChartInstance, RewriteChartSetOptionsParamsOptions} from './types/common'
 
 
-export const setOption = (charts: ReturnType<typeof echarts.init>, options: Parameters<typeof charts.setOption>[0] & OptionsType): ReturnType<typeof charts.setOption> => {
+export const setOption = (charts: ChartInstance, options: RewriteChartSetOptionsParamsOptions): ReturnType<ChartSetOptionsInstance> => {
     return charts.setOption(options)
 }
