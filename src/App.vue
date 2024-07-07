@@ -1,13 +1,13 @@
 <script  setup lang="ts">
 import {onMounted} from 'vue'
 import {initCharts, setOption} from '../packages'
-import {useAutoPlayTooltip} from '@packages/hooks/'
 
 onMounted(() => {
     initCharts('charts')
         .then(charts => charts)
         .then(charts => {
             setOption(charts, {
+                _autoPlayTooltip: 3000,
                 title: {
                     text: 'ECharts 入门示例',
                     show: true,
@@ -16,8 +16,13 @@ onMounted(() => {
                 },
                 tooltip: {
                     align: 'center',
+                    // trigger: 'axis'
+
                 },
+
                 xAxis: {
+                    // type: 'category',
+
                     axisTick: {
                         show: false
                     },
@@ -64,22 +69,7 @@ onMounted(() => {
                     }
                 ]
             })
-
-
-            setTimeout(() => {
-                charts.resize()
-            }, 5000)
-
-            useAutoPlayTooltip(charts)
-
-            // setTimeout(() => {
-            //     charts.dispatchAction({
-            //         type: 'showTip',
-            //         seriesIndex: 4,
-            //         dataIndex: 5
-            //     })
-            // })
-
+            // useAutoPlayTooltip(charts)
         })
 })
 
