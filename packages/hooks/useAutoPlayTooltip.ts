@@ -13,10 +13,23 @@ export const useAutoPlayTooltip = (charts: ChartInstance) => {
     let dataIndex = 0
     let seriesLen = 0
     let dataIndexLen = 0
+    let isAutoPlay = true
+    let timerTooltip: any = null
+
+
+    charts.on('mouseover', () => {
+        isAutoPlay = false
+        clearTimeout(timerTooltip)
+        timerTooltip = null
+    })
+    charts.on('mouseout', () => {
+        isAutoPlay = true
+        // eslint-disable-next-line @typescript-eslint/no-use-before-define
+        autoPlay()
+    })
 
 
     function autoPlay() {
-        let timerTooltip: any = null
         seriesLen = series && series.length
 
         if (seriesLen) {
@@ -42,13 +55,11 @@ export const useAutoPlayTooltip = (charts: ChartInstance) => {
 
                     clearTimeout(timerTooltip)
                     timerTooltip = null
-                    autoPlay()
+                    isAutoPlay && autoPlay()
                 }, autoPlayTooltip)
             }
 
         }
-
-
     }
     autoPlay()
 }
