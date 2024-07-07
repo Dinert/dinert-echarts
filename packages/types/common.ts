@@ -8,4 +8,5 @@ export type ChartSetOptionsParamsOptions = Parameters<ChartSetOptionsInstance>[0
 export interface RewriteChartSetOptionsParamsOptions extends ChartSetOptionsParamsOptions {
     title?: TitleComponentOption;
     tooltip?: TooltipComponentOption;
+    _autoPlayTooltip?: number | boolean;
 }
