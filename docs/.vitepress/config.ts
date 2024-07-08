@@ -8,8 +8,7 @@ function _resolve(dir: string) {
     return path.resolve(__dirname, dir)
 }
 export default defineConfig({
-    // base: process.env.NODE_ENV === 'production' ? '/dinert-echarts/' : '/',
-    base: '/',
+    base: process.env.NODE_ENV === 'production' ? '/dinert-echarts/' : '/',
     vite: {
         resolve: {
             alias: {

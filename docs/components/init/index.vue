@@ -12,6 +12,7 @@ onMounted(() => {
                     type: 'category',
                     data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
                 },
+                tooltip: {},
                 yAxis: {
                     type: 'value'
                 },
