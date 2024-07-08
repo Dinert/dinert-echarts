@@ -28,6 +28,9 @@ features:
   - title: 全局引入和按需引入
     details: 直接支持全局引入和按需引入无需配置任何插件
 
+  - title: 自适应
+    details: 图表中的自适应需要开发者自行去封装,现在有vue版本的封装用例
+
   - title: 一些建议
     details: 请尽量在项目中使用TypeScript，能够最大的提高你的开发效率
 

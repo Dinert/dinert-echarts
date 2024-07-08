@@ -26,9 +26,11 @@ export const setOption = (charts: ChartInstance, options: RewriteChartSetOptions
         const newOptions = lodash.defaultsDeep(lodash.cloneDeep(configOptions), options2)
 
         charts.setOption(newOptions, notMerge)
+
         if (options.autoPlayTooltip) {
             useAutoPlayTooltip(charts)
         }
+
         resolve(charts)
     })
 }

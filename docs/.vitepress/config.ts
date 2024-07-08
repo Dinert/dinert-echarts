@@ -54,7 +54,26 @@ export default defineConfig({
                     text: '图表初始化',
                     link: '/examples/init',
                 },
-            ]
+                {
+                    text: '复杂图表',
+                    items: [
+                        {
+                            text: '折线图',
+                            base: '/examples/line/',
+                            target: '/examples/line/basic',
+                            collapsed: true,
+                            items: [
+                                {
+                                    text: '基础用法',
+                                    link: 'basic'
+                                }
+                            ]
+                        },
+                    ]
+                }
+            ],
+
+
         }
 
     },
