@@ -13,7 +13,7 @@
 
 <script>
 import '@amap/amap-jsapi-types' // ts支持
-import {initMap} from '@dinert/amap'
+import {initMap} from '@dinert/echarts'
 window._AMapSecurityConfig = {
     securityJsCode: 'xxx'
 }
@@ -38,7 +38,7 @@ export default {
 <script setup lang="ts">
 import '@amap/amap-jsapi-types'  // ts支持
 import {onMounted, ref} from 'vue'
-import {initMap} from '@dinert/amap'
+import {initMap} from '@dinert/echarts'
 
 window._AMapSecurityConfig = {
     securityJsCode: 'xxx'

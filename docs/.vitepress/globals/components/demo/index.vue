@@ -19,7 +19,6 @@ import {
 } from '@element-plus/icons-vue'
 import {getModule} from '../../../utils/module'
 import {$message} from '../../../utils/message'
-import {useData} from 'vitepress'
 
 interface PropsType {
     description?: string
@@ -34,17 +33,13 @@ const props = withDefaults(defineProps<PropsType>(), {
     rawSource: '',
     source: ''
 })
-const viteData = useData()
 
 const preRequiredObjects = ref({})
 if (typeof window !== 'undefined') {
     import('../../../../../packages').then(module => {
-        preRequiredObjects.value['@dinert/amap'] = {
+        console.log(module, 'modulessssssssss')
+        preRequiredObjects.value['@dinert/echarts'] = {
             ...module,
-            initMap: (id: Parameters<typeof module.initMap>[0], options: Parameters<typeof module.initMap>[1], amapOptions: Parameters<typeof module.initMap>[2]) => {
-                options.mapStyle = viteData.isDark.value ? 'amap://styles/darkblue' : 'amap://styles/normal'
-                return module.initMap(id, options, amapOptions)
-            }
         }
     })
 }
@@ -83,7 +78,7 @@ const decodedDescription = computed(() => {
 
 const decodeSource = computed(() => {
     let result = decodeURIComponent(demoSource.value as any)
-    result = result.replace(packagesReg, '@dinert/amap')
+    result = result.replace(packagesReg, '@dinert/echarts')
 
     return result
 })
@@ -94,7 +89,7 @@ const decodeRawSource = computed(() => {
         result = result.split('\n').join('')
     }
     // result = result.replace(packagesLine, '');
-    result = result.replace(packagesReg, '@dinert/amap')
+    result = result.replace(packagesReg, '@dinert/echarts')
     result = result.replace(str, '')
     result = result.replace(str2, '')
     result = result.replace(str3, '')
@@ -108,7 +103,7 @@ const decodeCodeRawSource = computed(() => {
     if (process.env.NODE_ENV !== 'production') {
         result = result.split('\n').join('')
     }
-    result = result.replace(packagesReg, '@dinert/amap')
+    result = result.replace(packagesReg, '@dinert/echarts')
     result = result.replace(str, '')
     result = result.replace(str2, '')
     result = result.replace(str3, '')

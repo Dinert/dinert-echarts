@@ -6,7 +6,7 @@ titleTemplate: Amap组件库
 
 hero:
   name: DinertEcharts
-  text: 基于Amap二次封装的方法库
+  text: 基于Echarts二次封装的方法库
   tagline: 让你能够享受到更好的开发体验
   actions:
     - theme: brand
@@ -22,8 +22,8 @@ features:
   - title: echarts+Typscript
     details: 基于vite打包和echarts+TypeScript二次封装
 
-  - title: 兼容Vue2和vue3
-    details: 无需在意你的vue版本
+  - title: 兼容各种框架
+    details: 无需在意你使用的技术框架
 
   - title: 全局引入和按需引入
     details: 直接支持全局引入和按需引入无需配置任何插件

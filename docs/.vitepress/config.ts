@@ -8,7 +8,8 @@ function _resolve(dir: string) {
     return path.resolve(__dirname, dir)
 }
 export default defineConfig({
-    base: process.env.NODE_ENV === 'production' ? '/dinert-echarts/' : '/',
+    // base: process.env.NODE_ENV === 'production' ? '/dinert-echarts/' : '/',
+    base: '/',
     vite: {
         resolve: {
             alias: {
@@ -18,7 +19,9 @@ export default defineConfig({
         },
         plugins: [
         ],
-
+        server: {
+            port: 8033
+        }
     },
 
     themeConfig: {
@@ -49,7 +52,7 @@ export default defineConfig({
             ],
             '/examples/': [
                 {
-                    text: '地图初始化',
+                    text: '图表初始化',
                     link: '/examples/init',
                 },
             ]
