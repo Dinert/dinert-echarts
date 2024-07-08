@@ -7,7 +7,7 @@ onMounted(() => {
         .then(charts => charts)
         .then(charts => {
             setOption(charts, {
-                _autoPlayTooltip: 3000,
+                autoPlayTooltip: 3000,
                 title: {
                     text: 'ECharts 入门示例',
                     show: true,
@@ -69,7 +69,14 @@ onMounted(() => {
                     }
                 ]
             })
-            // useAutoPlayTooltip(charts)
+            console.log(charts.isDisposed(), '1111')
+
+            setTimeout(() => {
+                // charts.dispose()
+                charts.clear()
+                console.log(charts, '1111')
+            }, 10000)
+
         })
 })
 

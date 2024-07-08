@@ -1,11 +1,15 @@
 
-import {ChartInstance} from '../types/common'
+import {ChartInstance, RewriteChartSetOptionsParamsOptions} from '../types/common'
 
 export const useAutoPlayTooltip = (charts: ChartInstance) => {
 
-    const options = charts.getOption()
-    const autoPlayTooltip = options._autoPlayTooltip as number || 3000
-    if (options.autoPlayTooltip) {
+    if (!charts) {
+        return
+    }
+
+    const options = charts.getOption() as RewriteChartSetOptionsParamsOptions
+    const autoPlayTooltip = options.autoPlayTooltip as number || 3000
+    if (!options.autoPlayTooltip) {
         return
     }
     const series = options.series as any[] || []
@@ -13,23 +17,36 @@ export const useAutoPlayTooltip = (charts: ChartInstance) => {
     let dataIndex = 0
     let seriesLen = 0
     let dataIndexLen = 0
-    let isAutoPlay = true
     let timerTooltip: any = null
+    let isAutoPlay = true
 
-
-    charts.on('mouseover', () => {
+    const mouseoverFn = () => {
         isAutoPlay = false
         clearTimeout(timerTooltip)
         timerTooltip = null
-    })
-    charts.on('mouseout', () => {
+    }
+
+    const mouseoutFn = () => {
         isAutoPlay = true
         // eslint-disable-next-line @typescript-eslint/no-use-before-define
         autoPlay()
-    })
+    }
+
+    charts.on('mouseover', mouseoverFn)
+    charts.on('mouseout', mouseoutFn)
 
 
     function autoPlay() {
+        const options2 = charts.getOption()
+
+        if (charts.isDisposed() || !options2.autoPlayTooltip) {
+            clearTimeout(timerTooltip)
+            timerTooltip = null
+            charts.off('mouseover', mouseoverFn)
+            charts.off('mouseout', mouseoutFn)
+            isAutoPlay = false
+        }
+
         seriesLen = series && series.length
 
         if (seriesLen) {
@@ -62,4 +79,5 @@ export const useAutoPlayTooltip = (charts: ChartInstance) => {
         }
     }
     autoPlay()
+
 }
