@@ -241,6 +241,7 @@ const copyCode = async () => {
         display: flex;
         justify-content: center;
         align-items: center;
+        overflow-y: auto;
         padding: 24px;
         width: 50%;
         background-color: var(--el-bg-color);
@@ -290,6 +291,7 @@ const copyCode = async () => {
     &-example {
         &-component {
             // padding: 0 16px;
+            overflow: auto;
         }
 
         .el-divider {

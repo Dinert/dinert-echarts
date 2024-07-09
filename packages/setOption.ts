@@ -1,5 +1,4 @@
 import {ChartInstance, ChartSetOptionsParams, RewriteChartSetOptionsParamsOptions} from './types/common'
-import {useAutoPlayTooltip} from '@packages/hooks/'
 import lodash from 'lodash'
 
 const defaultOptions = {
@@ -26,10 +25,6 @@ export const setOption = (charts: ChartInstance, options: RewriteChartSetOptions
         const newOptions = lodash.defaultsDeep(lodash.cloneDeep(configOptions), options2)
 
         charts.setOption(newOptions, notMerge)
-
-        if (options.autoPlayTooltip) {
-            useAutoPlayTooltip(charts)
-        }
 
         resolve(charts)
     })

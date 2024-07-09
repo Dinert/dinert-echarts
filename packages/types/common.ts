@@ -1,5 +1,5 @@
 import * as echarts from 'echarts'
-import {TitleComponentOption, TooltipComponentOption} from 'echarts'
+import {TitleComponentOption, TooltipComponentOption, SeriesOption} from 'echarts'
 export type InitChartsProps = Parameters<typeof echarts.init>
 export type ChartInstance = ReturnType<typeof echarts.init>
 export type ChartSetOptionsInstance = ReturnType<typeof echarts.init>['setOption']
@@ -11,6 +11,7 @@ export type AutoPlayTooltipProps = number | boolean | {delay?: number, after?: (
 export interface RewriteChartSetOptionsParamsOptions extends ChartSetOptionsParamsOptions {
     title?: TitleComponentOption;
     tooltip?: TooltipComponentOption;
+    series?: SeriesOption[];
     autoPlayTooltip?: AutoPlayTooltipProps;
     configBefore?: (charts: ChartInstance, options: RewriteChartSetOptionsParamsOptions) => RewriteChartSetOptionsParamsOptions;
 }

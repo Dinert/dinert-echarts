@@ -1,16 +1,16 @@
 
 import {ChartInstance, RewriteChartSetOptionsParamsOptions} from '../types/common'
 
-export const useAutoPlayTooltip = (charts: ChartInstance) => {
+export const useAutoPlayTooltip = (charts: ChartInstance): {timerTooltip?: null} => {
 
     if (!charts) {
-        return
+        return {}
     }
 
     const options = charts.getOption() as RewriteChartSetOptionsParamsOptions
     const autoPlayTooltip = options.autoPlayTooltip as number || 3000
     if (!options.autoPlayTooltip) {
-        return
+        return {}
     }
     const series = options.series as any[] || []
     let seriesIndex = 0
@@ -80,4 +80,7 @@ export const useAutoPlayTooltip = (charts: ChartInstance) => {
     }
     autoPlay()
 
+    return {
+        timerTooltip
+    }
 }
