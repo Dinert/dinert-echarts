@@ -1,7 +1,12 @@
 
 import {ChartInstance, RewriteChartSetOptionsParamsOptions} from '../types/common'
 
-export const useAutoPlayTooltip = (charts: ChartInstance, delay: number = 3000): {timerTooltip?: null, autoPlay?: () => void} => {
+export interface ResultAutoPlayTooltipProps{
+    stopPlay?: () => void;
+    autoPlay?: () => void;
+}
+
+export const useAutoPlayTooltip = (charts: ChartInstance, delay: number = 3000): ResultAutoPlayTooltipProps => {
 
     if (!charts) {
         return {}
@@ -29,18 +34,17 @@ export const useAutoPlayTooltip = (charts: ChartInstance, delay: number = 3000):
     charts.on('mouseover', mouseoverFn)
     charts.on('mouseout', mouseoutFn)
 
+    const stopPlay = () => {
+        clearTimeout(timerTooltip)
+        timerTooltip = null
+        charts.off('mouseover', mouseoverFn)
+        charts.off('mouseout', mouseoutFn)
+    }
+
 
     function autoPlay() {
 
-        if (charts.isDisposed()) {
-            clearTimeout(timerTooltip)
-            timerTooltip = null
-            charts.off('mouseover', mouseoverFn)
-            charts.off('mouseout', mouseoutFn)
-        }
-
         seriesLen = series && series.length
-
         if (seriesLen) {
             dataIndexLen = series[seriesIndex].data && series[seriesIndex].data.length
 
@@ -53,7 +57,6 @@ export const useAutoPlayTooltip = (charts: ChartInstance, delay: number = 3000):
                 seriesIndex = 0
             }
 
-            console.log('useAutoPlayTool')
             if (dataIndexLen) {
                 timerTooltip = setTimeout(() => {
 
@@ -75,7 +78,7 @@ export const useAutoPlayTooltip = (charts: ChartInstance, delay: number = 3000):
     autoPlay()
 
     return {
-        timerTooltip,
+        stopPlay,
         autoPlay
     }
 }

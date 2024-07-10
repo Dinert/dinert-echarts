@@ -73,6 +73,17 @@ export default defineConfig({
                                 },
                             ]
                         },
+                        {
+                            text: '扩展用法',
+                            base: '/examples/extend/',
+                            target: '/examples/extend/autoTooltip',
+                            items: [
+                                {
+                                    text: '自动播放tooltip',
+                                    link: 'autoTooltip'
+                                },
+                            ]
+                        }
                     ]
                 }
             ],
