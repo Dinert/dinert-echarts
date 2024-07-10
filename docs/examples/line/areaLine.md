@@ -1,8 +1,8 @@
-# 基本折线图
+# 堆叠面积图
 
 :::demo
 
-line/basic
+line/areaLine
 :::
 
 <!-- @include: ../explain.md -->

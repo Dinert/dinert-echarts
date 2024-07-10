@@ -1,33 +1,27 @@
 
 import {ChartInstance, RewriteChartSetOptionsParamsOptions} from '../types/common'
 
-export const useAutoPlayTooltip = (charts: ChartInstance): {timerTooltip?: null} => {
+export const useAutoPlayTooltip = (charts: ChartInstance, delay: number = 3000): {timerTooltip?: null, autoPlay?: () => void} => {
 
     if (!charts) {
         return {}
     }
 
     const options = charts.getOption() as RewriteChartSetOptionsParamsOptions
-    const autoPlayTooltip = options.autoPlayTooltip as number || 3000
-    if (!options.autoPlayTooltip) {
-        return {}
-    }
+
     const series = options.series as any[] || []
     let seriesIndex = 0
     let dataIndex = 0
     let seriesLen = 0
     let dataIndexLen = 0
     let timerTooltip: any = null
-    let isAutoPlay = true
 
     const mouseoverFn = () => {
-        isAutoPlay = false
         clearTimeout(timerTooltip)
         timerTooltip = null
     }
 
     const mouseoutFn = () => {
-        isAutoPlay = true
         // eslint-disable-next-line @typescript-eslint/no-use-before-define
         autoPlay()
     }
@@ -37,14 +31,12 @@ export const useAutoPlayTooltip = (charts: ChartInstance): {timerTooltip?: null}
 
 
     function autoPlay() {
-        const options2 = charts.getOption()
 
-        if (charts.isDisposed() || !options2.autoPlayTooltip) {
+        if (charts.isDisposed()) {
             clearTimeout(timerTooltip)
             timerTooltip = null
             charts.off('mouseover', mouseoverFn)
             charts.off('mouseout', mouseoutFn)
-            isAutoPlay = false
         }
 
         seriesLen = series && series.length
@@ -61,8 +53,10 @@ export const useAutoPlayTooltip = (charts: ChartInstance): {timerTooltip?: null}
                 seriesIndex = 0
             }
 
+            console.log('useAutoPlayTool')
             if (dataIndexLen) {
                 timerTooltip = setTimeout(() => {
+
                     charts.dispatchAction({
                         type: 'showTip',
                         seriesIndex: seriesIndex,
@@ -72,8 +66,8 @@ export const useAutoPlayTooltip = (charts: ChartInstance): {timerTooltip?: null}
 
                     clearTimeout(timerTooltip)
                     timerTooltip = null
-                    isAutoPlay && autoPlay()
-                }, autoPlayTooltip)
+                    autoPlay()
+                }, delay)
             }
 
         }
@@ -81,6 +75,7 @@ export const useAutoPlayTooltip = (charts: ChartInstance): {timerTooltip?: null}
     autoPlay()
 
     return {
-        timerTooltip
+        timerTooltip,
+        autoPlay
     }
 }

@@ -66,7 +66,11 @@ export default defineConfig({
                                 {
                                     text: '基础用法',
                                     link: 'basic'
-                                }
+                                },
+                                {
+                                    text: '面积折线图',
+                                    link: 'areaLine'
+                                },
                             ]
                         },
                     ]

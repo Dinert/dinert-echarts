@@ -11,6 +11,24 @@ const defaultOptions = {
         axisLine: {
             show: true
         }
+    },
+    grid: {
+        left: '3%',
+        right: '3%',
+        bottom: '3%',
+        containLabel: true
+    },
+}
+const changeOptions = (charts: ChartInstance, options: RewriteChartSetOptionsParamsOptions) => {
+    if (options && Object.prototype.toString.call(options.xAxis) === '[object Array]') {
+        options.xAxis?.forEach(item => {
+            item.axisTick = {show: false, ...item.axisTick}
+        })
+    }
+    if (options && Object.prototype.toString.call(options.yAxis) === '[object Array]') {
+        options.yAxis?.forEach(item => {
+            item.axisLine = {show: true, ...item.axisLine}
+        })
     }
 }
 
@@ -18,6 +36,7 @@ const defaultOptions = {
 export const setOption = (charts: ChartInstance, options: RewriteChartSetOptionsParamsOptions, notMerge?: ChartSetOptionsParams[1]): Promise<ChartInstance> => {
     return new Promise(resolve => {
 
+        changeOptions(charts, options)
         const options2 = lodash.defaultsDeep(lodash.cloneDeep(options), defaultOptions)
 
         const configOptions = typeof options.configBefore === 'function' && options.configBefore(charts, options2)

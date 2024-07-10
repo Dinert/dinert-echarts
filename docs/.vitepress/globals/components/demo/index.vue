@@ -37,7 +37,6 @@ const props = withDefaults(defineProps<PropsType>(), {
 const preRequiredObjects = ref({})
 if (typeof window !== 'undefined') {
     import('../../../../../packages').then(module => {
-        console.log(module, 'modulessssssssss')
         preRequiredObjects.value['@dinert/echarts'] = {
             ...module,
         }
