@@ -74,6 +74,18 @@ export default defineConfig({
                             ]
                         },
                         {
+                            text: '柱状图',
+                            base: '/examples/bar/',
+                            target: '/examples/bar/basic',
+                            collapsed: true,
+                            items: [
+                                {
+                                    text: '基础用法',
+                                    link: 'bar1'
+                                },
+                            ]
+                        },
+                        {
                             text: '扩展用法',
                             base: '/examples/extend/',
                             target: '/examples/extend/autoTooltip',

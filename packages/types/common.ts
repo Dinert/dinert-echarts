@@ -1,5 +1,5 @@
 import * as echarts from 'echarts'
-import {TitleComponentOption, TooltipComponentOption, SeriesOption, XAXisComponentOption, YAXisComponentOption} from 'echarts'
+import {TitleComponentOption, TooltipComponentOption, SeriesOption, XAXisComponentOption, YAXisComponentOption, LegendComponentOption} from 'echarts'
 export type InitChartsProps = Parameters<typeof echarts.init>
 export type ChartInstance = ReturnType<typeof echarts.init>
 export type ChartSetOptionsInstance = ReturnType<typeof echarts.init>['setOption']
@@ -14,6 +14,7 @@ export interface RewriteChartSetOptionsParamsOptions extends ChartSetOptionsPara
     xAxis?: XAXisComponentOption | XAXisComponentOption[];
     yAxis?: YAXisComponentOption | YAXisComponentOption[];
     series?: SeriesOption[];
+    legend?: LegendComponentOption;
     autoPlayTooltip?: AutoPlayTooltipProps;
     configBefore?: (charts: ChartInstance, options: RewriteChartSetOptionsParamsOptions) => RewriteChartSetOptionsParamsOptions;
 }
