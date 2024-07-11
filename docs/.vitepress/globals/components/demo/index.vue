@@ -50,10 +50,10 @@ const sourceVisible = ref(false)
 const editDialogVisible = ref(false)
 
 const packagesReg = /\.\.\/.*?packages/g
-const str = 'import {useData} from \'vitepress\''
-const str2 = 'import useMapStyle from \'../../hooks/useMapStyle\''
-const str3 = 'const {isDark} = useData()'
-const str4 = '.then(map => useMapStyle(map, isDark))'
+// const str = 'import {useData} from \'vitepress\''
+// const str2 = 'import useMapStyle from \'../../hooks/useMapStyle\''
+// const str3 = 'const {isDark} = useData()'
+// const str4 = '.then(map => useMapStyle(map, isDark))'
 
 onMounted(async () => {
     demoComponents.value = defineAsyncComponent(getModule(props.path))
@@ -61,11 +61,8 @@ onMounted(async () => {
 
 const {isSupported, copy} = useClipboard({
     source: () => {
-        let result = rawSource.value
-        result = result.replace(str, '')
-        result = result.replace(str2, '')
-        result = result.replace(str3, '')
-        result = result.replace(str4, '')
+        const result = rawSource.value
+
         return decodeURIComponent(result)
     },
 })
@@ -89,11 +86,6 @@ const decodeRawSource = computed(() => {
     }
     // result = result.replace(packagesLine, '');
     result = result.replace(packagesReg, '@dinert/echarts')
-    result = result.replace(str, '')
-    result = result.replace(str2, '')
-    result = result.replace(str3, '')
-    result = result.replace(str4, '')
-
     return result
 })
 
@@ -103,10 +95,6 @@ const decodeCodeRawSource = computed(() => {
         result = result.split('\n').join('')
     }
     result = result.replace(packagesReg, '@dinert/echarts')
-    result = result.replace(str, '')
-    result = result.replace(str2, '')
-    result = result.replace(str3, '')
-    result = result.replace(str4, '')
 
     return result
 })

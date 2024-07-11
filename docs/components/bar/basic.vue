@@ -14,6 +14,7 @@ onMounted(() => {
                 },
                 yAxis: {
                 },
+                tooltip: {},
                 series: [
                     {
                         data: [120, 200, 150, 80, 70, 110, 130],

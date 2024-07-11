@@ -1,6 +1,6 @@
 {
     "name": "@dinert/echarts",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "description": "基于ts封装的高德地图包",
     "scripts": {
         "dev": "vite",

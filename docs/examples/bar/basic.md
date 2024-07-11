@@ -2,7 +2,7 @@
 
 :::demo
 
-bar/bar1
+bar/basic
 :::
 
 

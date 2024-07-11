@@ -81,7 +81,7 @@ export default defineConfig({
                             items: [
                                 {
                                     text: '基础用法',
-                                    link: 'bar1'
+                                    link: 'basic'
                                 },
                             ]
                         },
