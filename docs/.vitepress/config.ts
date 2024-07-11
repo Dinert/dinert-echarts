@@ -86,6 +86,18 @@ export default defineConfig({
                             ]
                         },
                         {
+                            text: '饼图',
+                            base: '/examples/pie/',
+                            target: '/examples/pie/basic',
+                            collapsed: true,
+                            items: [
+                                {
+                                    text: '基础用法',
+                                    link: 'basic'
+                                },
+                            ]
+                        },
+                        {
                             text: '扩展用法',
                             base: '/examples/extend/',
                             target: '/examples/extend/autoTooltip',

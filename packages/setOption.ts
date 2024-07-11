@@ -2,16 +2,7 @@ import {ChartInstance, ChartSetOptionsParams, RewriteChartSetOptionsParamsOption
 import lodash from 'lodash'
 
 const defaultOptions = {
-    xAxis: {
-        axisTick: {
-            show: false
-        }
-    },
-    yAxis: {
-        axisLine: {
-            show: true
-        }
-    },
+    tooltip: {},
     grid: {
         left: '3%',
         right: '3%',
@@ -24,11 +15,16 @@ const changeOptions = (charts: ChartInstance, options: RewriteChartSetOptionsPar
         options.xAxis?.forEach(item => {
             item.axisTick = {show: false, ...item.axisTick}
         })
+    } else if (options && Object.prototype.toString.call(options.xAxis) === '[object Object]') {
+        options.xAxis.axisTick = {show: false, ...options.xAxis?.axisTick}
     }
+
     if (options && Object.prototype.toString.call(options.yAxis) === '[object Array]') {
         options.yAxis?.forEach(item => {
             item.axisLine = {show: true, ...item.axisLine}
         })
+    } else if (options && Object.prototype.toString.call(options.yAxis) === '[object Object]') {
+        options.yAxis.axisLine = {show: true, ...options.yAxis?.axisLine}
     }
 }
 
