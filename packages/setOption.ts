@@ -14,9 +14,24 @@ const defaultOptions = (charts: ChartInstance, options: RewriteChartSetOptionsPa
         yAxis: {}
     }
     if (['line', 'bar', undefined].includes(options.type)) {
-        newOptions.xAxis = {axisTick: {show: false}}
-        newOptions.yAxis = {axisLine: {show: true}}
-    } else if (options.type === 'pie') {
+        if (lodash.isArray(options.xAxis)) {
+            newOptions.xAxis = []
+            options.xAxis.forEach(() => {
+                (newOptions.xAxis as any).push({axisTick: {show: false}})
+            })
+        } else {
+            newOptions.xAxis = {axisTick: {show: false}}
+        }
+
+        if (lodash.isArray(options.yAxis)) {
+            newOptions.yAxis = []
+            options.yAxis.forEach(() => {
+                (newOptions.yAxis as any).push({axisLine: {show: true}})
+            })
+        } else {
+            newOptions.yAxis = {axisLine: {show: true}}
+        }
+    } else {
         delete (newOptions as any).xAxis
         delete (newOptions as any).yAxis
     }
