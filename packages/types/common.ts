@@ -9,7 +9,7 @@ export type ChartSetOptionsParamsOptions = Parameters<ChartSetOptionsInstance>[0
 export type AutoPlayTooltipProps = number | boolean | {delay?: number, after?: (charts?: ChartInstance) => void, isAutoPlay: boolean}
 
 export interface RewriteChartSetOptionsParamsOptions extends ChartSetOptionsParamsOptions {
-    type?: 'pie' | 'line' | 'bar';
+    type?: 'pie' | 'line' | 'bar' | 'column';
     title?: TitleComponentOption;
     tooltip?: TooltipComponentOption;
     xAxis?: XAXisComponentOption | XAXisComponentOption[];

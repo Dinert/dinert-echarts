@@ -4,12 +4,6 @@ import lodash from 'lodash'
 const defaultOptions = (charts: ChartInstance, options: RewriteChartSetOptionsParamsOptions): RewriteChartSetOptionsParamsOptions => {
     const newOptions = {
         tooltip: {},
-        grid: {
-            left: '3%',
-            right: '3%',
-            bottom: '3%',
-            containLabel: true
-        },
         xAxis: {},
         yAxis: {}
     }
