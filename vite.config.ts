@@ -15,7 +15,7 @@ export default defineConfig({
         // minify: false,
         rollupOptions: {
             // 忽略打包vue文件
-            external: ['vue', 'lodash', '@amap/amap-jsapi-loader'],
+            external: ['vue', 'lodash', 'echarts'],
             input: ['./packages/index.ts'],
 
             output: [
@@ -49,7 +49,7 @@ export default defineConfig({
                     globals: {
                         'vue': 'Vue',
                         'lodash': 'lodash',
-                        '@amap/amap-jsapi-loader': 'AMapLoader'
+                        'echarts': 'echarts'
                     },
                 }
             ],
