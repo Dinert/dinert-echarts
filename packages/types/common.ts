@@ -16,6 +16,7 @@ export interface RewriteChartSetOptionsParamsOptions extends ChartSetOptionsPara
     yAxis?: YAXisComponentOption | YAXisComponentOption[];
     series?: SeriesOption[];
     legend?: LegendComponentOption;
+    grid?: echarts.GridComponentOption;
     autoPlayTooltip?: AutoPlayTooltipProps;
     configBefore?: (charts: ChartInstance, options: RewriteChartSetOptionsParamsOptions) => RewriteChartSetOptionsParamsOptions;
 }
