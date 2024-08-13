@@ -7,7 +7,7 @@ const defaultOptions = (charts: ChartInstance, options: RewriteChartSetOptionsPa
         xAxis: {},
         yAxis: {}
     }
-    if (['line', 'bar', undefined].includes(options.type)) {
+    if (['line', 'bar', 'column', undefined].includes(options.type)) {
         if (lodash.isArray(options.xAxis)) {
             newOptions.xAxis = []
             options.xAxis.forEach(() => {
