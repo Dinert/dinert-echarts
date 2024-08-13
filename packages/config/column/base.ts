@@ -1,6 +1,6 @@
 import {RewriteChartSetOptionsParamsOptions} from '../../types/common'
 
-export const baseBarConfig: RewriteChartSetOptionsParamsOptions = {
+export const baseColumnConfig: RewriteChartSetOptionsParamsOptions = {
     type: 'column',
     xAxis: {
         type: 'category',
